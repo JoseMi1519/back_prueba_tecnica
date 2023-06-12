@@ -1,7 +1,8 @@
 require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
-const URL = "mongodb+srv://josemidelrio:josemi@cluster0.efbnfnt.mongodb.net/";
-const databaseName = "develop";
+const URL = process.env.DB_URL;
+const databaseName = process.env.DB_NAME;
+
 var DbConnection = function () {
   var client = null;
 
@@ -69,4 +70,4 @@ var DbConnection = function () {
   };
 };
 
-module.exports = DbConnection();
+module.exports = DbConnection
