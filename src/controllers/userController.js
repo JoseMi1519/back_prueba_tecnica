@@ -1,5 +1,14 @@
 const databaseConection = require("../db");
 const HandleError = require("./handleError");
+const User = require("../models/userModel");
+
+async function getUsers() {
+  console.log("getting users!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  const db = await databaseConection.GetConection();
+  const users = await db.collection("Users").find();
+  console.log(users);
+  return users;
+}
 
 async function createUser(name, phone, email, password) {
   console.log(
@@ -27,7 +36,6 @@ async function createUser(name, phone, email, password) {
   };
 
   const createdUser = await db.collection("Users").insertOne(newUser);
-  console.log(createdUser);
 
   return createdUser;
 }
@@ -42,5 +50,6 @@ class CreateUserException extends HandleError {
 
 module.exports = {
   createUser: createUser,
+  getUsers: getUsers,
   CreateUserException: CreateUserException,
 };

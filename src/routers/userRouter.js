@@ -1,12 +1,30 @@
 const express = require("express");
 const {
   createUser,
+  getUsers,
   CreateUserException,
 } = require("../controllers/userController");
 const usersRouter = express.Router();
 
 usersRouter.get("/", async (request, response) => {
-  response.json({ status: "recibido en get" });
+  let response_users = null;
+  let response_result = null;
+
+  try {
+    response_users = await getUsers();
+  } catch (error) {
+    console.log(error.code);
+    if (error.code != null) {
+      response_result = error.code;
+    } else {
+      response_result = CreateUserException.unknownError;
+    }
+  }
+
+  response.json({
+    user: response_users,
+    result: response_result,
+  });
 });
 
 usersRouter.post("/", async (request, response) => {
