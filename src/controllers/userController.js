@@ -11,7 +11,6 @@ async function createUser(name, phone, email, password) {
     "<-------"
   );
   const db = await databaseConection.GetConection();
-
   const doesEmailExist = await db.collection("Users").findOne({
     email: email,
   });
@@ -28,8 +27,9 @@ async function createUser(name, phone, email, password) {
   };
 
   const createdUser = await db.collection("Users").insertOne(newUser);
+  console.log(createdUser);
 
-  return createdUser.ops[0];
+  return createdUser;
 }
 
 class CreateUserException extends HandleError {

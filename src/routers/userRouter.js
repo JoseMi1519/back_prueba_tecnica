@@ -5,6 +5,10 @@ const {
 } = require("../controllers/userController");
 const usersRouter = express.Router();
 
+usersRouter.get("/", async (request, response) => {
+  response.json({ status: "recibido en get" });
+});
+
 usersRouter.post("/", async (request, response) => {
   const name = request.body.name;
   const phone = request.body.phone;
