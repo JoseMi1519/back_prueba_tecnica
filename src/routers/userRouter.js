@@ -2,6 +2,7 @@ const express = require("express");
 const {
   createUser,
   getUsers,
+  deleteUser,
   CreateUserException,
 } = require("../controllers/userController");
 const usersRouter = express.Router();
@@ -24,6 +25,20 @@ usersRouter.get("/", async (request, response) => {
   response.json({
     user: response_users,
     result: response_result,
+  });
+});
+
+usersRouter.delete("/", async (request, response) => {
+  console.log("Hola desde el ApiIIIIIIIIIIIIIIIIIIII", request.body);
+  let response_delete = null;
+  try {
+    response_delete = await deleteUser();
+  } catch (error) {
+    console.log(error);
+  }
+
+  response.json({
+    result: response_delete,
   });
 });
 
@@ -56,7 +71,10 @@ usersRouter.post("/", async (request, response) => {
       }
     }
   }
-
+  console.log("==============================");
+  console.log(response_user);
+  console.log(response_result);
+  console.log("==============================");
   response.json({
     user: response_user,
     result: response_result,

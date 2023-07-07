@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "_id": "648a8ef55088939faeadad23",
+      "name": "Isidoro",
+      "phone": "333333333",
+      "email": "elgato@pillo.es",
+      "password": "1234"
+    },
+
+    {
+      "_id": "648a9312d46539b5d3218239",
+      "name": "Juan",
+      "phone": "4444444444",
+      "email": "juan@pillo.es",
+      "password": "4567"
+    }
+  ]
+}

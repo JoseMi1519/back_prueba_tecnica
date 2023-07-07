@@ -1,5 +1,9 @@
 # back_prueba_tecnica
 
+## Project setup
+
+npm install
+
 ## Runnin the project
 
 For running up the backend, you can run:
